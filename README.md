@@ -1,45 +1,79 @@
-# EventBox
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-EventBox is a React Native app designed for users to rent event-related items. Users can select the items they need, specify the rental dates, and add event locations where the items will be used. The app then facilitates the rental process, coordinating the delivery of items from vendors to the specified event locations.
+# Getting Started
 
-## Installation
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-To install EventBox, follow these steps:
+## Step 1: Start the Metro Server
 
-1. Clone the repository:
-      git clone - https://github.com/NakshatraNamahaCreations/EventBox-UserApp
+First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-2. Navigate to the project directory:
-      cd EventBox-UserApp
+To start Metro, run the following command from the _root_ of your React Native project:
 
-3. Install dependencies:
-   npm install
+```bash
+# using npm
+npm start
 
-## Usage
+# OR using Yarn
+yarn start
+```
 
-To use EventBox, follow these steps:
+## Step 2: Start your Application
 
-1. Launch the app on your device or simulator.
-2. Browse available items and select the ones you need.
-3. Specify rental dates and event locations.
-4. Complete the checkout process to confirm your rental.
-5. Vendors will deliver the items to the specified event locations on the designated dates.
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-## Contributing
+### For Android
 
-We welcome contributions to EventBox! If you'd like to contribute, please follow these steps:
+```bash
+# using npm
+npm run android
 
-1. Fork the repository on GitHub.
-2. Create a new branch for your feature or bug fix:
-  git checkout -b my-feature
-3. Make your changes and commit them with descriptive commit messages:
-  git commit -am "Add new feature"
-4. Push your changes to your fork:
-    git push origin my-feature
-5. Open a pull request on the main repository and describe your changes.
+# OR using Yarn
+yarn android
+```
 
-Please make sure to adhere to our code of conduct and follow our contribution guidelines.
+### For iOS
 
-## License
+```bash
+# using npm
+npm run ios
 
-EventBox is licensed under the [MIT License](LICENSE).
+# OR using Yarn
+yarn ios
+```
+
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+
+## Step 3: Modifying your App
+
+Now that you have successfully run the app, let's modify it.
+
+1. Open `App.tsx` in your text editor of choice and edit some lines.
+2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+
+   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+
+## Congratulations! :tada:
+
+You've successfully run and modified your React Native App. :partying_face:
+
+### Now what?
+
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+
+# Troubleshooting
+
+If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+# Learn More
+
+To learn more about React Native, take a look at the following resources:
+
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

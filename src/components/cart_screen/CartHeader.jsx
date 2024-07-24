@@ -1,7 +1,7 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import { View, Text } from "react-native";
+import React from "react";
 
-export default function CartHeader({cartSize}) {
+export default function CartHeader({ cartSize }) {
   return (
     <View
       style={{
@@ -9,19 +9,21 @@ export default function CartHeader({cartSize}) {
         padding: 15,
         // elevation: 10,
         borderWidth: 2,
-        borderColor: '#e3e3e3',
-        flexDirection: 'row',
-      }}>
+        borderColor: "#e3e3e3",
+        flexDirection: "row",
+      }}
+    >
       <Text
         style={{
-          color: 'black',
+          color: "black",
           fontSize: 20,
-          fontWeight: '600',
+          fontWeight: "600",
           marginRight: 5,
-        }}>
+        }}
+      >
         Cart
       </Text>
-      <Text style={{color: 'black', fontSize: 20, fontWeight: '600'}}>
+      <Text style={{ color: "black", fontSize: 20, fontWeight: "600" }}>
         ({cartSize})
       </Text>
     </View>

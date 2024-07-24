@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.eventbox",
+  "applicationId": "com.eboxuserapp",
   "variantName": "debug",
   "elements": [
     {

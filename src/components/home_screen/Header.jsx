@@ -38,7 +38,7 @@ export default function Header() {
               <TouchableOpacity
                 style={{flex: 0.5}}
                 onPress={() => {
-                  navigation.navigate('Notification');
+                  navigation.navigate('Notifications');
                 }}>
                 <Ionicons name="notifications" color={'white'} size={25} />
               </TouchableOpacity>

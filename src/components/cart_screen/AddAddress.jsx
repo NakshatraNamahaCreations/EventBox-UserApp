@@ -1,8 +1,10 @@
 import React, {useRef, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Image, TouchableOpacity} from 'react-native';
 import {View, Text, TextInput} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
-import MapViewDirections from 'react-native-maps-directions';
+// import MapView, {Marker} from 'react-native-maps';
+// import MapViewDirections from 'react-native-maps-directions';
+// import MapView, {Marker} from 'react-native-maps';
+// import MapViewDirections from 'react-native-maps-directions';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 function AddAddress({navigation}) {
@@ -38,14 +40,16 @@ function AddAddress({navigation}) {
             height: 50,
             padding: 5,
             color: 'black',
-            fontSize: 18,
+            fontFamily: 'Montserrat-Medium',
+            fontSize: 16,
             paddingLeft: 16,
             marginTop: 10,
+            // letterSpacing: 1,
           }}
         />
       </View>
 
-      <MapView
+      {/* <MapView
         ref={mapRef}
         style={{width: '100%', height: '100%'}}
         initialRegion={{
@@ -71,7 +75,11 @@ function AddAddress({navigation}) {
           strokeWidth={7}
           strokeColor="#3dabdd"
         />
-      </MapView>
+      </MapView> */}
+      <Image
+        source={require('../../../assets/map.png')}
+        style={{width: '100%', height: '100%', resizeMode: 'cover'}}
+      />
       <View
         style={{
           backgroundColor: 'white',
@@ -89,9 +97,11 @@ function AddAddress({navigation}) {
           <View style={{flex: 0.9}}>
             <Text
               style={{
-                fontSize: 17,
+                fontSize: 16,
                 // fontWeight: 'bold',
                 color: 'black',
+                // letterSpacing: 1,
+                fontFamily: 'Montserrat-Medium',
               }}>
               {/* 1st Floor, No.38, AVS Compound, 80 Feet Rd, 4th Block, */}
               Madiwala, 1st Stage, Bommanahalli, Bengaluru, Karnataka 560068
@@ -101,20 +111,21 @@ function AddAddress({navigation}) {
         <TouchableOpacity
           style={{
             marginTop: 20,
-            backgroundColor: '#01007B',
+            backgroundColor: '#ceffa4',
             padding: 15,
             borderRadius: 5,
             marginBottom: 20,
+            elevation: 3,
           }}
           onPress={() => {
             navigation.navigate('Add Locality');
           }}>
           <Text
             style={{
-              color: 'white',
-              fontWeight: '600',
+              color: 'black',
               textAlign: 'center',
-              fontSize: 18,
+              fontSize: 16,
+              fontFamily: 'Montserrat-Medium',
             }}>
             Confirm Location
           </Text>

@@ -6,28 +6,28 @@ import {
   Dimensions,
   Image,
   ScrollView,
-} from 'react-native';
-import React, {useEffect, useRef} from 'react';
-import Header from './Header';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+} from "react-native";
+import React, { useEffect, useRef } from "react";
+import Header from "./Header";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-import VendorDisplay from '../vendor/VendorDisplay';
+import VendorDisplay from "../vendor/VendorDisplay";
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
-function Home({navigation}) {
+function Home({ navigation }) {
   const vendor = [
     {
       imageUrl:
-        'https://plus.unsplash.com/premium_photo-1661369901339-f6ac6d76541f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bXVzaWMlMjBldmVudHxlbnwwfHwwfHx8MA%3D%3D',
+        "https://plus.unsplash.com/premium_photo-1661369901339-f6ac6d76541f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bXVzaWMlMjBldmVudHxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
       imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnwdOUqXfAn8DfV_DoMhVBtklZJJzEyI7TuCpql2RnDNKMiVwcCdBJNg_4IBEhzCnQ7VQ&usqp=CAU',
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnwdOUqXfAn8DfV_DoMhVBtklZJJzEyI7TuCpql2RnDNKMiVwcCdBJNg_4IBEhzCnQ7VQ&usqp=CAU",
     },
     {
       imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsGqYkSxwHvmTZKgZTKHh6LCVRpN7B9qh6iXalyZd3VcKY9BocrfIpgXWdvhcNPpNUTlo&usqp=CAU',
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsGqYkSxwHvmTZKgZTKHh6LCVRpN7B9qh6iXalyZd3VcKY9BocrfIpgXWdvhcNPpNUTlo&usqp=CAU",
     },
   ];
 
@@ -42,39 +42,40 @@ function Home({navigation}) {
           animated: true,
         });
       } else {
-        scrollViewRef.current.scrollTo({x: 0, animated: true});
+        scrollViewRef.current.scrollTo({ x: 0, animated: true });
       }
     }, 2000);
 
     return () => clearInterval(interval);
   }, [imgActive]);
 
-  const onChange = event => {
+  const onChange = (event) => {
     const slide = Math.ceil(
-      event.contentOffset.x / event.layoutMeasurement.width,
+      event.contentOffset.x / event.layoutMeasurement.width
     );
     if (slide !== imgActive) {
       setImgActive(slide);
     }
   };
 
-  const imageSliderData = vendor.map(item => ({
+  const imageSliderData = vendor.map((item) => ({
     img: item.imageUrl,
   }));
 
-  const imagenew = imageSliderData.map(item => item.img);
+  const imagenew = imageSliderData.map((item) => item.img);
   return (
     <ScrollView style={styles.container}>
       <Header />
 
       <View style={styles.moodBoardSection}>
         <View style={styles.moodBoard}>
-          <View style={{flex: 0.4}}>
+          <View style={{ flex: 0.4 }}>
             <TouchableOpacity
               style={styles.boardDesign}
               onPress={() => {
-                navigation.navigate('Create New Project');
-              }}>
+                navigation.navigate("Create New Project");
+              }}
+            >
               <Text style={[styles.newProject, styles.button]}>
                 New Project
               </Text>
@@ -84,9 +85,9 @@ function Home({navigation}) {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={{flex: 0.1}}></View>
-          <View style={{flex: 0.5}}>
-            <View style={{marginTop: 15}}>
+          <View style={{ flex: 0.1 }}></View>
+          <View style={{ flex: 0.5 }}>
+            <View style={{ marginTop: 15 }}>
               <Text style={styles.text}>
                 Design your event, just the way you like it.
               </Text>
@@ -102,19 +103,20 @@ function Home({navigation}) {
         <View>
           <ScrollView
             ref={scrollViewRef}
-            onScroll={({nativeEvent}) => onChange(nativeEvent)}
+            onScroll={({ nativeEvent }) => onChange(nativeEvent)}
             showsHorizontalScrollIndicator={false}
             pagingEnabled
             horizontal
-            style={styles.viewBox}>
+            style={styles.viewBox}
+          >
             {imageSliderData.map((e, index) => (
               <View key={index.toString()} style={styles.imageContainer}>
                 <Image
                   key={index}
                   resizeMode="stretch"
                   style={styles.bannerImage}
-                  source={{uri: e.img}}
-                  onError={() => console.log('Error loading image:', e.img)}
+                  source={{ uri: e.img }}
+                  onError={() => console.log("Error loading image:", e.img)}
                 />
               </View>
             ))}
@@ -123,7 +125,8 @@ function Home({navigation}) {
             {imagenew.map((e, index) => (
               <Text
                 key={index}
-                style={imgActive === index ? styles.dotActive : styles.dot}>
+                style={imgActive === index ? styles.dotActive : styles.dot}
+              >
                 ●
               </Text>
             ))}
@@ -132,17 +135,19 @@ function Home({navigation}) {
       </View>
       <View
         style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
           marginLeft: 20,
           margin: 10,
-        }}>
+        }}
+      >
         <Text style={styles.vendorTitle}>Vendor For You</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('All Vendors');
-          }}>
+            navigation.navigate("All Vendors");
+          }}
+        >
           <Text style={styles.seeAll}>See all</Text>
         </TouchableOpacity>
       </View>
@@ -156,43 +161,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  moodBoardSection: {backgroundColor: 'white'},
+  moodBoardSection: { backgroundColor: "white" },
   moodBoard: {
     padding: 20,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   text: {
-    color: 'black',
+    color: "black",
     fontSize: 15,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   text1: {
-    color: 'black',
+    color: "black",
     fontSize: 15,
     marginTop: 20,
-    fontWeight: '400',
+    fontWeight: "400",
   },
   boardDesign: {
     padding: 15,
     width: 135,
     height: 135,
     borderRadius: 10,
-    backgroundColor: '#E3A400',
+    backgroundColor: "#E3A400",
   },
   newProject: {
     fontSize: 15,
-    color: 'white',
+    color: "white",
   },
   tab: {
     marginTop: 10,
     fontSize: 15,
 
-    color: '#fed66d',
+    color: "#fed66d",
   },
   addIcon: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   bannerSection: {
     marginTop: 10,
@@ -212,39 +217,39 @@ const styles = StyleSheet.create({
     height: 200,
   },
   dotContainer: {
-    backgroundColor: 'transparent',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    backgroundColor: "transparent",
+    flexDirection: "row",
+    justifyContent: "center",
 
-    alignItems: 'center',
+    alignItems: "center",
   },
   imageContainer: {
     borderRadius: 10,
     marginHorizontal: 10,
   },
   wrapDot: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    flexDirection: 'row',
-    alignSelf: 'center',
+    flexDirection: "row",
+    alignSelf: "center",
   },
   dotActive: {
     margin: 3,
-    color: 'white',
+    color: "white",
   },
   dot: {
     margin: 3,
-    color: 'yellow',
+    color: "yellow",
   },
   vendorTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
+    fontWeight: "bold",
+    color: "black",
   },
   seeAll: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#2f4e9e',
+    fontWeight: "bold",
+    color: "#2f4e9e",
     marginRight: 10,
   },
   vendorSection: {

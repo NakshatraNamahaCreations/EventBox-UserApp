@@ -1,138 +1,46 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Feather from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import HomeStack from '../main_stack/HomeStack';
-import OrdersStack from '../main_stack/OrdersStack';
 import CartStack from '../main_stack/CartStack';
 import MyProfile from '../components/profile_screen/MyProfile';
+import BookingStack from '../main_stack/BookingStack';
+import CategoryStack from '../main_stack/CategoryStack';
+import {TouchableOpacity} from 'react-native';
+// import CustomTabBar from './CustomTabBar';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTab() {
+  const CustomTabBarButton = ({children, onPress, accessibilityState}) => {
+    const isSelected = accessibilityState.selected;
+
+    return (
+      <TouchableOpacity
+        onPress={onPress}
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: isSelected ? '#ceffa4' : 'transparent',
+          borderRadius: 0, // Adjust the border radius as needed
+        }}>
+        {children}
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    // <Tab.Navigator
-    //   initialRouteName="home"
-    //   screenOptions={{
-    //     tabBarActiveTintColor: '#01007B',
-    //     headerTintColor: '#01007B',
-    //   }}>
-    //   <Tab.Screen
-    //     name="Home"
-    //     component={Home}
-    //     options={{
-    //       tabBarLabel: 'Home',
-    //       headerShown: false,
-    //       tabBarIcon: ({color, size}) => (
-    //         <MaterialCommunityIcons name="home" color={color} size={size} />
-    //       ),
-    //     }}
-    //   />
-    //   <Tab.Screen
-    //     name="Orders"
-    //     component={Orders}
-    //     options={{
-    //       tabBarLabel: 'Orders',
-    //       headerShown: false,
-    //       tabBarIcon: ({color, size}) => (
-    //         <MaterialIcons name="receipt" color={color} size={size} />
-    //       ),
-    //     }}
-    //   />
-    //   <Tab.Screen
-    //     name="Cart"
-    //     component={Orders}
-    //     options={{
-    //       tabBarLabel: 'Cart',
-    //       tabBarLabelStyle: {
-    //         color: 'black',
-    //       },
-    //       headerShown: false,
-    //       tabBarIcon: ({color, size}) => (
-    //         <MaterialCommunityIcons
-    //           name="tape-measure"
-    //           color={color}
-    //           size={size}
-    //         />
-    //       ),
-    //     }}
-    //   />
-    //   <Tab.Screen
-    //     name="TabStack"
-    //     component={TabStack}
-    //     options={{
-    //       tabBarLabel: 'More',
-    //       headerShown: true,
-    //       tabBarIcon: ({color, size}) => (
-    //         <MaterialCommunityIcons
-    //           name="dots-horizontal"
-    //           color={color}
-    //           size={size}
-    //         />
-    //       ),
-    //     }}
-    //   />
-    //   {/*
-    //   <Tab.Screen
-    //     name="Home"
-    //     component={Home}
-    //     options={{
-    //       tabBarLabel: 'Home',
-    //       tabBarLabelStyle: {
-    //         color: 'black',
-    //       },
-    //       headerShown: false,
-    //       tabBarIcon: ({color, size}) => (
-    //         <MaterialCommunityIcons
-    //           name="tape-measure"
-    //           color={color}
-    //           size={size}
-    //         />
-    //       ),
-    //     }}
-    //   />
-
-    //   <Tab.Screen
-    //     name="Home"
-    //     component={Home}
-    //     options={{
-    //       tabBarLabel: 'Home',
-    //       tabBarLabelStyle: {
-    //         color: 'black',
-    //       },
-    //       headerShown: true,
-    //       tabBarIcon: ({color, size}) => (
-    //         <Entypo name="tools" color={color} size={size} />
-    //       ),
-    //     }}
-    //   />
-
-    //   <Tab.Screen
-    //     name="Home"
-    //     component={Home}
-    //     options={{
-    //       tabBarLabel: 'Home',
-    //       tabBarLabelStyle: {
-    //         color: 'black',
-    //       },
-    //       headerShown: true,
-
-    //       tabBarIcon: ({color, size}) => (
-    //         <MaterialIcons
-    //           name="add-circle-outline"
-    //           color={color}
-    //           size={size}
-    //         />
-    //       ),
-    //     }}
-    //   /> */}
-    // </Tab.Navigator>
     <Tab.Navigator
       initialRouteName="Home"
+      // tabBar={props => <CustomTabBar {...props} />}
       screenOptions={{
-        tabBarActiveTintColor: '#01007B',
+        tabBarActiveTintColor: 'black',
         headerTintColor: '#01007B',
+        tabBarActiveBackgroundColor: '#ceffa4',
+        tabBarStyle: {height: 55},
       }}>
       <Tab.Screen
         name="HomeStack"
@@ -141,22 +49,30 @@ export default function BottomTab() {
           tabBarLabel: 'Home',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            <AntDesign name="home" color={color} size={size} />
+          ),
+          tabBarButton: props => <CustomTabBarButton {...props} />,
+        }}
+      />
+      <Tab.Screen
+        name="BookingStack"
+        component={BookingStack}
+        options={{
+          tabBarLabel: 'Bookings',
+          headerShown: false,
+          tabBarIcon: ({color, size}) => (
+            <AntDesign name="calendar" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="OrdersStack"
-        component={OrdersStack}
+        name="CategoryStack"
+        component={CategoryStack}
         options={{
-          tabBarLabel: 'Orders',
+          tabBarLabel: 'Categories',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
-            <MaterialIcons
-              name="format-list-bulleted-add"
-              color={color}
-              size={size}
-            />
+            <MaterialIcons name="category" color={color} size={size} />
           ),
         }}
       />
@@ -164,14 +80,11 @@ export default function BottomTab() {
         name="CartStack"
         component={CartStack}
         options={{
+          tabBarBadge: 5,
           tabBarLabel: 'Cart',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons
-              name="cart-variant"
-              color={color}
-              size={size}
-            />
+            <AntDesign name="shoppingcart" color={color} size={size} />
           ),
         }}
       />
@@ -182,7 +95,7 @@ export default function BottomTab() {
           tabBarLabel: 'You',
           headerShown: false,
           tabBarIcon: ({color, size}) => (
-            <Feather name="user" color={color} size={size} />
+            <AntDesign name="user" color={color} size={size} />
           ),
         }}
       />
